@@ -10,6 +10,7 @@ using AspNetWebApplication.Models;
 
 namespace AspNetWebApplication.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private CrudContext db = new CrudContext();
@@ -36,6 +37,7 @@ namespace AspNetWebApplication.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +48,7 @@ namespace AspNetWebApplication.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ID,Name,Details")] Category category)
         {
             if (ModelState.IsValid)
@@ -59,6 +62,7 @@ namespace AspNetWebApplication.Controllers
         }
 
         // GET: Categories/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +82,7 @@ namespace AspNetWebApplication.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "ID,Name,Details")] Category category)
         {
             if (ModelState.IsValid)
@@ -90,6 +95,7 @@ namespace AspNetWebApplication.Controllers
         }
 
         // GET: Categories/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +111,7 @@ namespace AspNetWebApplication.Controllers
         }
 
         // POST: Categories/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -115,6 +122,7 @@ namespace AspNetWebApplication.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         protected override void Dispose(bool disposing)
         {
             if (disposing)

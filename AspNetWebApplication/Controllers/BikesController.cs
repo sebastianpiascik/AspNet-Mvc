@@ -10,6 +10,7 @@ using AspNetWebApplication.Models;
 
 namespace AspNetWebApplication.Controllers
 {
+    [Authorize]
     public class BikesController : Controller
     {
         private CrudContext db = new CrudContext();
@@ -71,6 +72,7 @@ namespace AspNetWebApplication.Controllers
         }
 
         // GET: Bikes/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.CurrentCategoryId = new SelectList(db.Categories, "ID", "Name");
@@ -82,6 +84,7 @@ namespace AspNetWebApplication.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ID,Name,Brand,Weight,CurrentCategoryId")] Bike bike)
         {
             if (ModelState.IsValid)
@@ -96,6 +99,7 @@ namespace AspNetWebApplication.Controllers
         }
 
         // GET: Bikes/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -116,6 +120,7 @@ namespace AspNetWebApplication.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "ID,Name,Brand,Weight,CurrentCategoryId")] Bike bike)
         {
             if (ModelState.IsValid)
@@ -129,6 +134,7 @@ namespace AspNetWebApplication.Controllers
         }
 
         // GET: Bikes/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -146,6 +152,7 @@ namespace AspNetWebApplication.Controllers
         // POST: Bikes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Bike bike = db.Bikes.Find(id);
@@ -154,6 +161,7 @@ namespace AspNetWebApplication.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         protected override void Dispose(bool disposing)
         {
             if (disposing)
