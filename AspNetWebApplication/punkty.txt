@@ -6,7 +6,6 @@ Modele: 35%
 - atrybuty dotyczące widoków: 10%
 - minimum 2 tabele z relacją jeden-do-wiele: 10%
 
-35
 
 Kontrolery: 30%
 
@@ -14,14 +13,11 @@ Kontrolery: 30%
 - logowanie i przynależność do ról: 10%
 - LINQ: 10%
 
-30
 
 Widoki: 35%
 
 - widoki pisane w Razor + przekazywanie danych do widoku: 7%
 umiejętność + przykład ręcznego rozszerzenia widoku: 7%
 - widoki częściowe + komunikacja z widokiem podstawowym: 7% (@Html.Partial("_LoginPartial"))
-zastosowanie podstawowych helperów + definicja własnych: 7%
+- zastosowanie podstawowych helperów + definicja własnych: 7%
 - zastosowanie layoutów: 7%
-
-21
