@@ -1,0 +1,16 @@
+﻿@model IEnumerable<AspNetWebApplication.Models.Bike>
+@using AspNetWebApplication.Helpers
+
+
+<p style="padding-left:10px;color:dodgerblue">Number of bikes: @Model.Count()</p>
+<p style="padding-left:10px;color:dodgerblue">Highest weight: @ViewBag.BikesMaxWeight</p>
+
+@MyHelper.NoteHelper("Todo // coś")
+
+@foreach (var item in ViewData["bikesWeight"] as List<Double>)
+{
+    <span>
+        @item
+        |
+    </span>
+}

@@ -25,6 +25,7 @@ namespace AspNetWebApplication.Controllers
                 {
                 bikesList.Add(item.Weight);
             }
+            ViewData["bikesWeight"] = bikesList;
             ViewBag.BikesMaxWeight = bikesList.Max();
 
 
